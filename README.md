@@ -3,7 +3,7 @@ Python modules for biologists wanting to easily generate DNA sequences used to s
 
 #### Python module names
 ```
-hampath
+[hampath](https://github.com/Abesuden/BioComputing/blob/master/README.md#hampath-hamiltonian-path-problem)
 sattruthvalue
 ```
 
