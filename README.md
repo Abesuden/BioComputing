@@ -24,11 +24,11 @@ report()        <-- generates a text file with the DNA sequences for the nodes a
 #### Examples of methods
 ```
 changeMer(30)   <-- changes the DNA length of each node/connector
-createNodes(["`X1,`X2,X2","X1,`X2,`X3","`X1,X2,X3"])  <-- creates all truth value nodes, Vin, Vout, and connector nodes
+createNodes(["`X1,`X2,X2", "X1,`X2,`X3", "`X1,X2,X3"])  <-- creates all truth value nodes, Vin, Vout, and connector nodes
 report()        <-- generates a text file with the DNA sequences for all truth value nodes, Vin, Vout, and connector nodes
 ```
 
 #### Alternative truth value negation arguments
 ```
-createNodes(["~X1,~X2,X2","X1,~X2,~X3","~X1,X2,X3"])
+createNodes(["~X1,~X2,X2", "X1,~X2,~X3", "~X1,X2,X3"])
 ```
