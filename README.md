@@ -3,7 +3,13 @@ Python modules for biologists wanting to easily generate DNA sequences used to s
 
 #### Python module names
 * **[hampath](https://github.com/Abesuden/BioComputing/blob/master/README.md#hampath-hamiltonian-path-problem)**
-* **[sattruthvalue](https://github.com/Abesuden/BioComputing/blob/master/README.md#sattv-sat-truth-value-problem)**
+* **[sattv](https://github.com/Abesuden/BioComputing/blob/master/README.md#sattv-sat-truth-value-problem)**
+
+#### Python module TBA
+```
+satg
+kcol
+```
 
 ## hampath (Hamiltonian Path Problem)
   Can be found in the hamiltonianPath folder and is used to generate nodes and connections from nucleotides. The output from this program will give the exact DNA sequences you need to order to work on this problem.
