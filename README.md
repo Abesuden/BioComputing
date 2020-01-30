@@ -18,7 +18,7 @@ connectNodes(["0->1,3,6", "1->2,3", "2->1,3", "3->2,4,", "4->1,5", "5->2,6"])  <
 report()        <-- generates a text file with the DNA sequences for the nodes and connectors
 ```
 
-## sattruthvalue (SAT Truth Value Problem)
+## sattv (SAT Truth Value Problem)
   Can be found in the hamiltonianPath folder and is used to generate nodes and connections from nucleotides. The output from this program will give the exact DNA sequences you need to order to work on this problem.
 
 #### Examples of methods
