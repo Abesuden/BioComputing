@@ -42,30 +42,42 @@ def createNodes(truthValues):
             print("|Vout|" + createdNode + " node created |")
         else:
             print("| V" + str(i) + " |" + createdNode + " node created |")
-    print("|---------------------------------------'-----.")
-    for i in range((largestNum+1)): # *2):
-        if (i != largestNum+1): # *2):
-            fishingRods.append(_complimentary(nodes[largestNum*2+i][mer/2:]) + _complimentary(nodes[i][:mer/2]))
-            fishingRods.append(_complimentary(nodes[largestNum*2+i][mer/2:]) + _complimentary(nodes[(i-largestNum)+1][:mer/2]))
-        else:
-            fishingRods.append(_complimentary(nodes[i-1][:mer/2]) + _complimentary(nodes[len(nodes)-1][mer/2:]))
-            fishingRods.append(_complimentary(nodes[(i-largestNum)+1-1][:mer/2]) + _complimentary(nodes[len(nodes)-1][mer/2:]))
-    isPrime = True
-    for i in range(len(fishingRods)):
-        if ((isPrime) & (i < len(fishingRods))):
-            print("| C" + str(i/2+1) + " |" + fishingRods[i] + " connection created |")
-            isPrime = False
-        elif (i < len(fishingRods)):
-            print("|~C" + str(i/2+1) + " |" + fishingRods[i] + " connection created |")
-            isPrime = True
-        else:
-            print("===")
+    print("|---------------------------------------'----.")
+    nodeLocation = 0
+    vertexLocation = largestNum*2
+    for i in range(largestNum*4):
+        if ((i % 4) == 0):
+            fishingRods.append(
+                _complimentary(nodes[vertexLocation][mer/2:]) +
+                _complimentary(nodes[nodeLocation][:mer/2])
+            )
+            print("| C" + str(nodeLocation + 1) + "a|" + fishingRods[i] + " connector created |")
+        if ((i % 4) == 1):
+            fishingRods.append(
+                _complimentary(nodes[nodeLocation][mer/2:]) +
+                _complimentary(nodes[vertexLocation+1][:mer/2])
+            )
+            print("| C" + str(nodeLocation + 1) + "b|" + fishingRods[i] + " connector created |")
+        if ((i % 4) == 2):
+            fishingRods.append(
+                _complimentary(nodes[vertexLocation][mer/2:]) +
+                _complimentary(nodes[nodeLocation+largestNum][:mer/2])
+            )
+            print("|~C" + str(nodeLocation + 1) + "a|" + fishingRods[i] + " connector created |")
+        if ((i % 4) == 3):
+            fishingRods.append(
+                _complimentary(nodes[nodeLocation+largestNum][mer/2:]) +
+                _complimentary(nodes[vertexLocation+1][:mer/2])
+            )
+            print("|~C" + str(nodeLocation + 1) + "b|" + fishingRods[i] + " connector created |")
+            nodeLocation += 1
+            vertexLocation += 1
     if nodeNumber < 10*2:
-        print("'---------------------------------------------'")
+        print("'--------------------------------------------'")
     elif nodeNumber > 9*2 & nodeNumber < 100*2:
-        print("'----------------------------------------------'")
+        print("'---------------------------------------------'")
     elif nodeNumber > 99*2:
-        print("'-----------------------------------------------'")
+        print("'----------------------------------------------'")
     return nodes
 
 
