@@ -1,5 +1,5 @@
-import BioComp
-import SATTruthValue
+import hampath
+import sattv
 
 """
 BioComp.changeMer(30)
