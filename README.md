@@ -7,8 +7,9 @@ Python modules for biologists wanting to easily generate DNA sequences used to s
 
 #### Python module TBA
 ```
-satg
-kcol
+smod - Sticker Model
+satg - SAT-Graphs
+kcol - K-colorability problem
 ```
 
 ## hampath (Hamiltonian Path Problem)
