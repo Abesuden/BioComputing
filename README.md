@@ -12,7 +12,7 @@ kcol
 ```
 
 ## hampath (Hamiltonian Path Problem)
-  Can be found in the hamiltonianPath folder and is used to generate nodes and connections from nucleotides. The output from this program will give the exact DNA sequences you need to order to work on this problem.
+  Can be found in the HamiltonianPath folder and is used to generate nodes and connections from nucleotides. The output from this program will give the exact DNA sequences you need to order to work on this problem.
 
 #### Examples of methods
 ```
