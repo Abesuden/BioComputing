@@ -17,26 +17,43 @@ def createNodes(truthValues):
             raise Exception("Invalid truthValues() argument " + str(type(truthValues[ex])) + " all arguments must be of <type 'str'>")
     regEx = []
     truthValueCount = []
+    argument = []
     for i in range(len(truthValues)):
         regEx.append(re.split(",", truthValues[i]))
     for ex in range(len(regEx)):
         for ez in range(len(regEx[ex])):
-            if ((len(regEx[ex][ez]) != 2) & (len(regEx[ex][ez]) != 3)):
-                raise Exception("Invalid truthValues() argument length of " + str(len(regEx[ex][ez])) + " characters, each argument's length must be of size 2 or 3 characters (i.e. x1 or ~x1)")
-            if ((len(regEx[ex][ez]) == 3) & (regEx[ex][ez][0] != '`') & (regEx[ex][ez][0] != '~')):
-                raise Exception("Invalid truthValues() argument negation " + "(" + str(regEx[ex][ez][0]) + ")" + str(regEx[ex][ez][1]) + str(regEx[ex][ez][2]) + ", the only accepted negation characters are '~' and '`'")
-            if regEx[ex][ez][len(regEx[ex][ez])-1] not in truthValueCount:
-                truthValueCount.append(regEx[ex][ez][len(regEx[ex][ez])-1])
+            argument.append(re.split("x|X", regEx[ex][ez]))
+    for ex in range(len(argument)):
+        # print(ord(argument[ex]))
+        if (len(argument[ex]) == 1 ):
+                raise Exception("Invalid, truthValues() argument is empty at argument position " + str(ex+1))
+        for ez in argument[ex]:
+            if ((ez != "`") & (ez != "~") & (not ez.isdigit()) & (ez != "")):
+                raise Exception("Invalid truthValues() argument format " + str(argument[ex][0]) + "X" + str(argument[ex][1]) + " where [" + str(ez) + "] is not acceptable")
+        if ((argument[ex][0] != "") & (argument[ex][0] != "`") & (argument[ex][0] != "~")):
+            raise Exception("Invalid truthValues() argument negation " + "(" + str(regEx[ex][0]) + ")" + "X" + str(regEx[ex][1]) + ", the only accepted negation characters are '~' and '`'")
+        if (not argument[ex][len(argument[ex])-1].isdigit()):
+            raise Exception("Invalid truthValues() argument format at truth value position " + str(ex+1) + " where argument is missing a number assignment [" + str(argument[ex][0]) + "X]")
+        # print(argument[ex])
+            # if ((len(regEx[ex][ez]) != 2) & (len(regEx[ex][ez]) != 3)):
+            #     raise Exception("Invalid truthValues() argument length of " + str(len(regEx[ex][ez])) + " characters, each argument's length must be of size 2 or 3 characters (i.e. x1 or ~x1)")
+            # if ((len(regEx[ex][ez]) == 3) & (regEx[ex][ez][0] != '`') & (regEx[ex][ez][0] != '~')):
+            #     raise Exception("Invalid truthValues() argument negation " + "(" + str(regEx[ex][ez][0]) + ")" + str(regEx[ex][ez][1]) + str(regEx[ex][ez][2]) + ", the only accepted negation characters are '~' and '`'")
+            # if regEx[ex][ez][len(regEx[ex][ez])-1] not in truthValueCount:
+            #     truthValueCount.append(regEx[ex][ez][len(regEx[ex][ez])-1])
+        if argument[ex][len(argument[ex])-1] not in truthValueCount:
+            truthValueCount.append(argument[ex][len(argument[ex])-1])
     nodeNumber = len(regEx) * len(regEx[0])
     print("  -==Starting DNA sequence creation==-")
     print(".---------------------------------------.")
     largestNum = 0
-    for elem in range(len(regEx)):
-        for subElem in range(len(regEx[elem])):
-            if (regEx[elem][subElem][len(regEx[elem][subElem])-1] > largestNum):
-                largestNum = int(regEx[elem][subElem][len(regEx[elem][subElem])-1])
-    excep = largestNum
-    for each in range(len(truthValueCount)):
+    for elem in range(len(argument)):
+        if (int(argument[elem][len(argument[elem])-1]) > largestNum):
+            largestNum = int(argument[elem][len(argument[elem])-1])
+    excep = 0
+    for elem in truthValueCount:
+        excep += int(elem)
+    for each in truthValueCount:
         excep -= int(each)
     if (excep != 0):
         raise Exception("Invalid truthValues() argument format, truth value assignments cannot skip numbers (i.e. \"x1,x2,x4\" is not an accepted format)")
@@ -65,26 +82,26 @@ def createNodes(truthValues):
     for i in range(largestNum*4):
         if ((i % 4) == 0):
             fishingRods.append(
-                _complimentary(nodes[vertexLocation][mer/2:]) +
-                _complimentary(nodes[nodeLocation][:mer/2])
+                _complimentary(nodes[vertexLocation][int(mer/2):]) +
+                _complimentary(nodes[nodeLocation][:int(mer/2)])
             )
             print("| C" + str(nodeLocation + 1) + "a|" + fishingRods[i] + " connector created |")
         if ((i % 4) == 1):
             fishingRods.append(
-                _complimentary(nodes[nodeLocation][mer/2:]) +
-                _complimentary(nodes[vertexLocation+1][:mer/2])
+                _complimentary(nodes[nodeLocation][int(mer/2):]) +
+                _complimentary(nodes[vertexLocation+1][:int(mer/2)])
             )
             print("| C" + str(nodeLocation + 1) + "b|" + fishingRods[i] + " connector created |")
         if ((i % 4) == 2):
             fishingRods.append(
-                _complimentary(nodes[vertexLocation][mer/2:]) +
-                _complimentary(nodes[nodeLocation+largestNum][:mer/2])
+                _complimentary(nodes[vertexLocation][int(mer/2):]) +
+                _complimentary(nodes[nodeLocation+largestNum][:int(mer/2)])
             )
             print("|~C" + str(nodeLocation + 1) + "a|" + fishingRods[i] + " connector created |")
         if ((i % 4) == 3):
             fishingRods.append(
-                _complimentary(nodes[nodeLocation+largestNum][mer/2:]) +
-                _complimentary(nodes[vertexLocation+1][:mer/2])
+                _complimentary(nodes[nodeLocation+largestNum][int(mer/2):]) +
+                _complimentary(nodes[vertexLocation+1][:int(mer/2)])
             )
             print("|~C" + str(nodeLocation + 1) + "b|" + fishingRods[i] + " connector created |")
             nodeLocation += 1
