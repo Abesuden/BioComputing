@@ -8,7 +8,7 @@ Python modules for biologists wanting to easily generate DNA sequences used to s
 #### Python module TBA
 ```
 smod - Sticker Model
-satg - SAT-Graphs
+satcon - SAT Contact Networks
 kcol - K-colorability problem
 ```
 
