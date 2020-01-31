@@ -23,7 +23,7 @@ report()        <-- generates a text file with the DNA sequences for the nodes a
 ```
 
 ## sattv (Satisfiability Truth Value Problem)
-  Can be found in the SAT-TruthValue folder and is used to generate nodes and connections from nucleotides. The output from this program will give the exact DNA sequences you need to order to work on this problem.
+  Can be found in the SAT-TruthValue folder and is used to generate nodes and connections from nucleotides. The output from this program will give the exact DNA sequences you need to order to work on this problem by following **Lipton's Algorithm**.
 
 #### Examples of methods
 ```
