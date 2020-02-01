@@ -100,7 +100,7 @@ def byteSize(byte): # by increments of 8 bits (aka. 40 nucleotides)
         raise Exception("Invalid byteSize() argument, needs to be a positive number")
     
     # build memory complex
-    for i in range(byte*8):
+    for i in range(byte*5*8):
         if ((i % 4) == 0):
             memoryComplex.append(binaryEight)
             # stickers.append(_complimentary("".join(binaryEight))) # deprecated
