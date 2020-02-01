@@ -4,10 +4,10 @@ Python modules for biologists wanting to easily generate DNA sequences used to s
 #### Python module names
 * **[hampath](https://github.com/Abesuden/BioComputing/blob/master/README.md#hampath-hamiltonian-path-problem)**
 * **[sattv](https://github.com/Abesuden/BioComputing/blob/master/README.md#sattv-Satisfiability-truth-value-problem)**
+* **[smod](https://github.com/Abesuden/BioComputing/blob/master/README.md#smod-Sticker-Model)**
 
-#### Python module TBA
+#### Python module TBD
 ```
-smod - Sticker Model
 satcon - SAT Contact Networks
 kcol - K-colorability problem
 ```
@@ -36,4 +36,15 @@ report()        <-- generates a text file with the DNA sequences for all truth v
 #### Alternative truth value negation arguments
 ```
 createNodes(["~X1,~X2,X2", "X1,~X2,~X3", "~X1,X2,X3"])
+```
+
+## smod (Sticker Model)
+  Can be found in the StickerModel folder and is used to generate memory complexes and stickers from nucleotides. The output from this program will give the exact DNA sequences you need to order to work with the sticker model.
+
+#### Examples of methods
+```
+memoryComplexLen(20)  <-- creates a memory complex with n specified nucleotides
+bitSize(5)            <-- creates a memory complex with (n * 5) nucleotides
+byteSize(5)           <-- creates a memory complex with (n * 5 * 8) nucleotides
+report()              <-- generates a text file with the DNA sequences that make up the memory complex and stickers
 ```
